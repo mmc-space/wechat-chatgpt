@@ -1,0 +1,32 @@
+{
+  "name": "wechat-chatgpt",
+  "version": "1.0.0",
+  "description": "微信 集成 ChatGPT 聊天机器人",
+  "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
+    "fix": "eslint --fix --ext .ts ./src/*",
+    "dev": "tsx ./src/index.ts"
+  },
+  "keywords": [
+    "wechat",
+    "wechay",
+    "chatgpt",
+    "ChatGPT",
+    "Node.js"
+  ],
+  "author": "codeDaiqin",
+  "license": "ISC",
+  "devDependencies": {
+    "@mmc-cloud/eslint-config-ts": "^1.0.1",
+    "eslint": "^8.36.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "chatgpt": "^5.1.2",
+    "http-proxy-agent": "^5.0.0",
+    "https-proxy-agent": "^5.0.1",
+    "node-fetch": "^3.3.1",
+    "wechaty": "^1.20.2"
+  }
+}
