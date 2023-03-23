@@ -1,4 +1,4 @@
-import wechat from './wecaht'
+import wechat from './wechat'
 
 const bootstarp = async () => {
   wechat.init()
