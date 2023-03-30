@@ -8,6 +8,8 @@
 
 ## Uasge
 
+Node.js Verison >= 18
+
 在 `.env` 文件中填入 ApiKey
 
 ```bash
