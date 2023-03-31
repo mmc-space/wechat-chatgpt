@@ -5,12 +5,15 @@
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "fix": "eslint --fix --ext .ts ./src/*",
-    "dev": "tsx ./src/index.ts"
+    "dev": "tsx ./src/index.ts",
+    "test": "vitest"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "keywords": [
+    "微信",
+    "聊天机器人",
     "wechat",
     "wechay",
     "chatgpt",
@@ -23,7 +26,8 @@
     "@mmc-cloud/eslint-config-ts": "^1.0.1",
     "eslint": "^8.36.0",
     "tsx": "^3.12.6",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.8"
   },
   "dependencies": {
     "chatgpt": "^5.1.2",
