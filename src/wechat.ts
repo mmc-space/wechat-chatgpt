@@ -13,7 +13,13 @@ import { queue } from './limit'
 
 class Wechat {
   private history = new Map<string, string>()
-  private wechaty: WechatyInterface = WechatyBuilder.build()
+  private wechaty: WechatyInterface = WechatyBuilder.build({
+    name: 'mmc-wechat',
+    puppetOptions: {
+      uos: true,
+    },
+    puppet: 'wechaty-puppet-wechat',
+  })
 
   constructor() {}
 
@@ -35,7 +41,7 @@ class Wechat {
           this.history.set(key, response.parentMessageId)
 
         // 微信回复消息
-        contact.say(`@${talker} ——————\n ${response?.text ?? ''}`)
+        contact.say(`${roomTopic ? `@${talker}——————\n` : ''} ${response?.text ?? ''}`)
       }
       catch (error) {
         console.log(error)
