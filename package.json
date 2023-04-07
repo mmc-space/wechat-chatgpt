@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "fix": "eslint --fix --ext .ts ./src/*",
-    "dev": "tsx ./src/index.ts",
+    "dev": "npx tsx -r dotenv/config ./src/index.ts",
     "test": "vitest",
     "build": "node -v"
   },
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "chatgpt": "^5.1.2",
+    "dotenv": "^16.0.3",
     "http-proxy-agent": "^5.0.0",
     "https-proxy-agent": "^5.0.1",
     "node-fetch": "^3.3.1",
