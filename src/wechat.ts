@@ -8,11 +8,12 @@ import type {
   WechatyInterface,
 } from 'wechaty/impls'
 import chatgpt from './gpt'
-import { groupKeywords } from './config'
+// import { groupKeywords } from './config'
 import { queue } from './limit'
 
 class Wechat {
   private history = new Map<string, string>()
+  private talkers: string[] = []
   private wechaty: WechatyInterface = WechatyBuilder.build({
     name: 'mmc-wechat',
     puppetOptions: {
@@ -57,27 +58,33 @@ class Wechat {
   }
 
   private onMessage = async (message: MessageInterface) => {
-    const self = message.self()
+    // const self = message.self()
     const contact = message.talker()
     // const receiver = message.listener()
-    const content = message.text().trim()
-    const room = message.room()
+    // const content = message.text().trim()
+    // const room = message.room()
     const talker = (await contact.alias()) || contact.name()
-    const isText = message.type() === this.wechaty.Message.Type.Text
+    // const isText = message.type() === this.wechaty.Message.Type.Text
 
-    if (self || !isText) return
+    // if (self || !isText) return
 
-    if (room) {
-      if (groupKeywords.some(keyword => content.includes(keyword))) {
-        const topic = await room.topic()
-        console.log(`group name: ${topic} talker: ${contact.name()} content: ${content}`)
-        this.sendMessage(room, content, talker, topic)
-      }
-    }
-    else {
-      console.log(`talker: ${talker} content: ${content}`)
-      this.sendMessage(contact, content, talker)
-    }
+    if (this.talkers.includes(talker)) return
+
+    this.talkers.push(talker)
+    // this.sendMessage(contact, content, talker)
+    contact.say(`我的好朋友: 毛毛虫去重铸肥宅荣光了! 定期统一回复消息 —— ${new Date().toLocaleDateString()}`)
+
+    // if (room) {
+    //   if (groupKeywords.some(keyword => content.includes(keyword))) {
+    //     const topic = await room.topic()
+    //     console.log(`group name: ${topic} talker: ${contact.name()} content: ${content}`)
+    //     this.sendMessage(room, content, talker, topic)
+    //   }
+    // }
+    // else {
+    //   console.log(`talker: ${talker} content: ${content}`)
+    //   this.sendMessage(contact, content, talker)
+    // }
   }
 
   private onLogin(user: ContactSelfInterface) {
