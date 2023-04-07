@@ -62,13 +62,13 @@ class Wechat {
     const contact = message.talker()
     // const receiver = message.listener()
     // const content = message.text().trim()
-    // const room = message.room()
+    const room = message.room()
     const talker = (await contact.alias()) || contact.name()
     // const isText = message.type() === this.wechaty.Message.Type.Text
 
     // if (self || !isText) return
 
-    if (this.talkers.includes(talker)) return
+    if (room || this.talkers.includes(talker)) return
 
     this.talkers.push(talker)
     // this.sendMessage(contact, content, talker)
