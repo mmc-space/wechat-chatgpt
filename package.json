@@ -6,7 +6,8 @@
     "preinstall": "npx -y only-allow pnpm",
     "fix": "eslint --fix --ext .ts ./src/*",
     "dev": "tsx ./src/index.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "node -v"
   },
   "engines": {
     "node": ">=18.0.0"
