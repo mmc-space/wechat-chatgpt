@@ -6,7 +6,7 @@ import config from './config'
 
 class ChatGPT {
   private chatgpt: ChatGPTAPI = new ChatGPTAPI({
-    apiKey: config.apiKey,
+    apiKey: process.env.API_KEY || config.apiKey,
     // fetch: (url, options) => nodeFetch(url, { ...options, agent: https(config.proxyUrl) }),
   })
 
